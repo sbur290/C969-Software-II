@@ -43,6 +43,7 @@
          this.customerReportsCancelBtn.TabIndex = 11;
          this.customerReportsCancelBtn.Text = "Cancel";
          this.customerReportsCancelBtn.UseVisualStyleBackColor = true;
+         this.customerReportsCancelBtn.Click += new System.EventHandler(this.customerReportsCancelBtn_Click);
          // 
          // customerReportsGenerateBtn
          // 
@@ -92,7 +93,7 @@
          this.Controls.Add(this.customerReportsAddressIDLbl);
          this.Controls.Add(this.customerReportsTitleLbl);
          this.Name = "ReportsByCustomerAddressID";
-         this.Text = "ReportsByCustomerAddressID";
+         this.Text = "Customers by Address";
          this.Load += new System.EventHandler(this.ReportsByCustomerAddressID_Load);
          this.ResumeLayout(false);
          this.PerformLayout();

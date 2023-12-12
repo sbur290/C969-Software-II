@@ -90,6 +90,7 @@
          // 
          // monthlyReportsTypeCmb
          // 
+         this.monthlyReportsTypeCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.monthlyReportsTypeCmb.FormattingEnabled = true;
          this.monthlyReportsTypeCmb.Location = new System.Drawing.Point(65, 107);
          this.monthlyReportsTypeCmb.Name = "monthlyReportsTypeCmb";
@@ -98,6 +99,7 @@
          // 
          // monthlyReportsMonthCmb
          // 
+         this.monthlyReportsMonthCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.monthlyReportsMonthCmb.FormattingEnabled = true;
          this.monthlyReportsMonthCmb.Location = new System.Drawing.Point(74, 147);
          this.monthlyReportsMonthCmb.Name = "monthlyReportsMonthCmb";

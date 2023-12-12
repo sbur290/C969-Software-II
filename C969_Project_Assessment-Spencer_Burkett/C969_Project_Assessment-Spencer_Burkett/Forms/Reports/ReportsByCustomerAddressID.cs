@@ -72,6 +72,5 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Reports
       {
          Close();
       }
-
    }
 }

@@ -50,6 +50,7 @@
          this.customerReportsCancelBtn.TabIndex = 16;
          this.customerReportsCancelBtn.Text = "Cancel";
          this.customerReportsCancelBtn.UseVisualStyleBackColor = true;
+         this.customerReportsCancelBtn.Click += new System.EventHandler(this.customerReportsCancelBtn_Click);
          // 
          // appointmentReportsGenerateBtn
          // 
@@ -81,7 +82,7 @@
          this.appointmentReportsTitleLbl.Text = "To generate a report, please type User ID, then press Generate ";
          this.appointmentReportsTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
          // 
-         // ReportsByCustomerAppointment
+         // ReportsByUserAppointment
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,7 +92,7 @@
          this.Controls.Add(this.appointmentReportsGenerateBtn);
          this.Controls.Add(this.appointmentReportsUserIDLbl);
          this.Controls.Add(this.appointmentReportsTitleLbl);
-         this.Name = "ReportsByCustomerAppointment";
+         this.Name = "ReportsByUserAppointment";
          this.Text = "ReportsByCustomerAppointment";
          this.ResumeLayout(false);
          this.PerformLayout();
