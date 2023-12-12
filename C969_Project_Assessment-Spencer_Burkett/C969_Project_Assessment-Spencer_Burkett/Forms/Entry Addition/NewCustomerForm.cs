@@ -29,6 +29,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Entry_Addition
       private void LoadForm()
       {
          newCustomerIDTxtBx.Text = DBConnection.GenerateID("customer", "customerId").ToString();
+         newCustomerAddressIDCmb.Items.Clear();
 
          List<Address> allAddresses = DBConnection.GetAddresses();
          foreach (var address in allAddresses)

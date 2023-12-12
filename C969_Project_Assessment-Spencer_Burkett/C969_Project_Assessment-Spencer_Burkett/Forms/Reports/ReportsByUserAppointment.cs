@@ -45,5 +45,10 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Reports
          
 
       }
+
+      private void customerReportsCancelBtn_Click(object sender, EventArgs e)
+      {
+         Close();
+      }
    }
 }

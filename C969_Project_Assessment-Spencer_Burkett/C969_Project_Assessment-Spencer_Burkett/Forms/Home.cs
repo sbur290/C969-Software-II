@@ -171,6 +171,9 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          modifyDeleteAppointmentToolStripMenuItem.Click += OnModifyDeleteAppointmentToolStripSelected;
          newCustomerToolStripMenuItem.Click += OnNewCustomerToolStripSelected;
          modifyDeleteCustomerToolStripMenuItem.Click += OnModifyDeleteCustomerToolStripSelected;
+
+         addressIDCmb.SelectedIndex = 0;
+         customerIDCmb.SelectedIndex = 0;
          #endregion ConstructionEnd
       }
 

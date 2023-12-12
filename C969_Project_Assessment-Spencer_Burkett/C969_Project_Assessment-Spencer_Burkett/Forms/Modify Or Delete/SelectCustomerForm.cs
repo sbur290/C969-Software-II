@@ -30,6 +30,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Modify_Or_Delete
       private void LoadForm()
       {
          List<Customer> allCustomers = DBConnection.GetCustomers();
+         selectCustomerIDCmb.Items.Clear();
          foreach (var customer in allCustomers)
          {
             selectCustomerIDCmb.Items.Add(customer.CustomerID);
