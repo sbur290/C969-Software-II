@@ -121,6 +121,8 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          allCustomers.Clear();
          allUsers.Clear();
          userAppointments.Clear();
+         customerIDCmb.Items.Clear();
+         addressIDCmb.Items.Clear();
 
          #endregion DestructionEnd
 
@@ -381,6 +383,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          ReportsByCustomerAddressID reportsByCustomerAddressID = new ReportsByCustomerAddressID();
          this.Visible = false;
          reportsByCustomerAddressID.ShowDialog();
+         ResetHomeForm();
          this.Visible = true;
       }
 
@@ -389,6 +392,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          ReportsByUserAppointment reportsByUserAppointment = new ReportsByUserAppointment();
          this.Visible = false;
          reportsByUserAppointment.ShowDialog();
+         ResetHomeForm();
          this.Visible = true;
       }
       private void OnNewAppointmentToolStripSelected (object sender, EventArgs e)
@@ -396,6 +400,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          NewAppointmentForm newAppointmentForm = new NewAppointmentForm(activeUser);
          this.Visible = false;
          newAppointmentForm.ShowDialog();
+         ResetHomeForm();
          this.Visible = true;
       }
       
@@ -404,6 +409,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          SelectAppointmentForm selectAppointmentForm = new SelectAppointmentForm(activeUser);
          this.Visible = false;
          selectAppointmentForm.ShowDialog();
+         ResetHomeForm();
          this.Visible = true;
       }
 
@@ -412,6 +418,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          NewCustomerForm newCustomerForm = new NewCustomerForm(activeUser);
          this.Visible = false;
          newCustomerForm.ShowDialog();
+         ResetHomeForm();
          this.Visible = true;
       }
 
@@ -420,6 +427,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          SelectCustomerForm selectCustomerForm = new SelectCustomerForm(activeUser);
          this.Visible = false;
          selectCustomerForm.ShowDialog();
+         ResetHomeForm();
          this.Visible = true;
       }
       #endregion
