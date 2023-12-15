@@ -195,11 +195,13 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
             {
                earliestDate = earliestDate.ToLocalTime();
                latestDate = latestDate.ToLocalTime();
+               currentAppointmentViewRangeLbl.Text = $"Viewing User Appointments from\r\n{earliestDate.ToLocalTime():dd MMM yyyy HH:mm:ss} to {latestDate.ToLocalTime():dd MMM yyyy HH:mm:ss}";
             }
             else
             {
                earliestDate = earliestDate.ToUniversalTime();
                latestDate = latestDate.ToUniversalTime();
+               currentAppointmentViewRangeLbl.Text = $"Viewing User Appointments from\r\n{earliestDate.ToUniversalTime():dd MMM yyyy HH:mm:ss} to {latestDate.ToUniversalTime():dd MMM yyyy HH:mm:ss}";
             }
 
          }
@@ -223,13 +225,11 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
                {
                   appointmentStart = appointmentStart.ToLocalTime();
                   appointmentEnd = appointmentEnd.ToLocalTime();
-                  currentAppointmentViewRangeLbl.Text = $"Viewing User Appointments from\r\n{earliestDate.ToLocalTime():dd MMM yyyy HH:mm:ss} to {latestDate.ToLocalTime():dd MMM yyyy HH:mm:ss}";
                }
                else
                {
                   appointmentStart = appointmentStart.ToUniversalTime();
                   appointmentEnd = appointmentEnd.ToUniversalTime();
-                  currentAppointmentViewRangeLbl.Text = $"Viewing User Appointments from\r\n{earliestDate.ToUniversalTime():dd MMM yyyy HH:mm:ss} to {latestDate.ToUniversalTime():dd MMM yyyy HH:mm:ss}";
                }
 
                AppointmentListing listing = new AppointmentListing(appointment.ID, userName, customerName, appointment.Title, appointment.Description, appointment.Type, appointmentStart, appointmentEnd);
@@ -267,12 +267,13 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
       {
          if (viewAppointmentsMonthlyRadioBtn.Checked)
          {
-            viewAppointmentsWeeklyRadioBtn.Checked = false;
 
+            viewAppointmentsWeeklyRadioBtn.Checked = false;
             earliestDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             latestDate = earliestDate.AddMonths(1).AddTicks(-1);
 
             ReloadCalendar(false);
+
          }
       }
 
@@ -290,6 +291,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
             latestDate = earliestDate.AddDays(6);
 
             ReloadCalendar(false);
+
          }
       }
 
@@ -431,6 +433,5 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          this.Visible = true;
       }
       #endregion
-
    }
 }

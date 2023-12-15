@@ -572,19 +572,19 @@
             this.newCustomerToolStripMenuItem,
             this.modifyDeleteCustomerToolStripMenuItem});
          this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
-         this.customersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.customersToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
          this.customersToolStripMenuItem.Text = "Customers";
          // 
          // newCustomerToolStripMenuItem
          // 
          this.newCustomerToolStripMenuItem.Name = "newCustomerToolStripMenuItem";
-         this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
          this.newCustomerToolStripMenuItem.Text = "New";
          // 
          // modifyDeleteCustomerToolStripMenuItem
          // 
          this.modifyDeleteCustomerToolStripMenuItem.Name = "modifyDeleteCustomerToolStripMenuItem";
-         this.modifyDeleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.modifyDeleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
          this.modifyDeleteCustomerToolStripMenuItem.Text = "Modify/Delete";
          // 
          // appointmentsToolStripMenuItem
@@ -593,19 +593,19 @@
             this.newAppointmentToolStripMenuItem,
             this.modifyDeleteAppointmentToolStripMenuItem});
          this.appointmentsToolStripMenuItem.Name = "appointmentsToolStripMenuItem";
-         this.appointmentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.appointmentsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
          this.appointmentsToolStripMenuItem.Text = "Appointments";
          // 
          // newAppointmentToolStripMenuItem
          // 
          this.newAppointmentToolStripMenuItem.Name = "newAppointmentToolStripMenuItem";
-         this.newAppointmentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.newAppointmentToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
          this.newAppointmentToolStripMenuItem.Text = "New";
          // 
          // modifyDeleteAppointmentToolStripMenuItem
          // 
          this.modifyDeleteAppointmentToolStripMenuItem.Name = "modifyDeleteAppointmentToolStripMenuItem";
-         this.modifyDeleteAppointmentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.modifyDeleteAppointmentToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
          this.modifyDeleteAppointmentToolStripMenuItem.Text = "Modify/Delete";
          // 
          // reportsToolStripMenuItem
