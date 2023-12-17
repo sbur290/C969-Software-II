@@ -27,7 +27,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
       private List<Address> allAddresses;
       private List<City> allCities;
       private List<Country> allCountries;
-     
+
 
       private List<AppointmentListing> userAppointments;
 
@@ -39,8 +39,8 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          InitializeComponent();
          allAddresses = new List<Address>();
          allAppointments = new List<Appointment>();
-         allCities       = new List<City>();
-         allCountries    = new List<Country>();
+         allCities = new List<City>();
+         allCountries = new List<Country>();
          allCustomers = new List<Customer>();
          allUsers = new List<User>();
 
@@ -61,33 +61,33 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
 
       private void CheckSchedule()
       {
-         if(userAppointments.Count > 0)
+         if (userAppointments.Count > 0)
          {
-               IEnumerable<AppointmentListing> currentAppointments =
-               from appointment in userAppointments
-               orderby appointment.StartDate.ToUniversalTime().TimeOfDay descending
-               where appointment.StartDate.ToUniversalTime().Date == DateTime.Now.ToUniversalTime() 
-               select appointment;
+            IEnumerable<AppointmentListing> currentAppointments =
+            from appointment in userAppointments
+            orderby appointment.StartDate.ToUniversalTime().TimeOfDay ascending
+            select appointment;
 
 
             AppointmentListing closestListing = currentAppointments.First();
 
-            foreach(var appointment in currentAppointments) 
+            foreach (var appointment in currentAppointments)
             {
                DateTime appointmentStart = appointment.StartDate.ToUniversalTime();
                DateTime closestAppointmentDate = closestListing.StartDate.ToUniversalTime();
-               if(appointmentStart.TimeOfDay < closestAppointmentDate.TimeOfDay && appointmentStart.TimeOfDay > DateTime.Now.ToUniversalTime().TimeOfDay)
+               if (appointmentStart.TimeOfDay < closestAppointmentDate.TimeOfDay && appointmentStart.TimeOfDay > DateTime.Now.ToUniversalTime().TimeOfDay)
                {
                   closestListing = appointment;
                }
             }
 
             DateTime closestAppointment = closestListing.StartDate.ToUniversalTime();
+            DateTime closestTime = closestAppointment;
 
-            if(closestAppointment.Date == DateTime.Now.ToUniversalTime().Date          &&
-               closestAppointment.Hour - DateTime.Now.ToUniversalTime().Hour == 0      &&
-               closestAppointment.Minute - DateTime.Now.ToUniversalTime().Minute <= 15 &&
-               closestAppointment.Minute - DateTime.Now.ToUniversalTime().Minute >= 0) //Might try to revise, basically just date and hour are the same and minutes are within 0-15 from start.
+            if (closestAppointment.Date == DateTime.Now.ToUniversalTime().Date &&
+               closestAppointment.Hour - DateTime.Now.ToUniversalTime().Hour == 0 &&
+               closestTime.Minute - DateTime.Now.ToUniversalTime().Minute <= 15 &&
+               closestTime.Minute - DateTime.Now.ToUniversalTime().Minute >= 0) 
             {
                MessageBox.Show($"You have an appointment in {closestListing.StartDate.Minute - DateTime.Now.Minute} minutes with {closestListing.CustomerName}");
             }
@@ -129,8 +129,8 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          #region Construction
          var diff = DateTime.Now.DayOfWeek - CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
          if (diff < 0) { diff += 7; }
-         earliestDate = DateTime.Now.AddDays(-diff).Date;
-         latestDate = earliestDate.AddDays(6);
+         earliestDate = new DateTime();
+         latestDate = DateTime.Now.AddYears(300);
 
          allAddresses = DBConnection.GetAddresses();
          allAppointments = DBConnection.GetAppointments();
@@ -139,12 +139,12 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          allCustomers = DBConnection.GetCustomers();
          allUsers = DBConnection.GetUsers();
 
-         foreach(var customer in allCustomers)
+         foreach (var customer in allCustomers)
          {
             customerIDCmb.Items.Add(customer.CustomerID.ToString());
          }
 
-         foreach(var address in allAddresses)
+         foreach (var address in allAddresses)
          {
             addressIDCmb.Items.Add(address.ID.ToString());
          }
@@ -154,7 +154,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
 
          if (!scheduleChecked)
          {
-            //CheckSchedule();
+            CheckSchedule();
             scheduleChecked = true;
          }
 
@@ -173,6 +173,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          modifyDeleteAppointmentToolStripMenuItem.Click += OnModifyDeleteAppointmentToolStripSelected;
          newCustomerToolStripMenuItem.Click += OnNewCustomerToolStripSelected;
          modifyDeleteCustomerToolStripMenuItem.Click += OnModifyDeleteCustomerToolStripSelected;
+         viewAppointmentAllRadioBtn.Checked = true;
 
          addressIDCmb.SelectedIndex = 0;
          customerIDCmb.SelectedIndex = 0;
@@ -209,19 +210,19 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
             from appointment in allAppointments
             where appointment.UserID == activeUser.ID
             select appointment;
-         
 
-         foreach(var appointment in filteredAppointments )
+
+         foreach (var appointment in filteredAppointments)
          {
-            if(appointment.StartDate >= earliestDate && appointment.EndDate <= latestDate)
-            { 
+            if (appointment.StartDate >= earliestDate && appointment.EndDate <= latestDate)
+            {
                string userName = allUsers.Where(name => name.ID == appointment.UserID).Select(name => name.Username).ElementAt(0); //Lambda expression used in selecting the username instead of a separate function for a more linear viewing experience
                string customerName = allCustomers.Where(name => name.CustomerID == appointment.UserID).Select(name => name.CustomerName).ElementAt(0); //Lambda expression used in selecting the customer name for the same reason. Both increase simplicity by removing unneccessary separate functions.
 
                DateTime appointmentStart = appointment.StartDate;
                DateTime appointmentEnd = appointment.EndDate;
 
-               if( viewTimeZoneLocalRadioBtn.Checked == true)
+               if (viewTimeZoneLocalRadioBtn.Checked == true)
                {
                   appointmentStart = appointmentStart.ToLocalTime();
                   appointmentEnd = appointmentEnd.ToLocalTime();
@@ -244,11 +245,10 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
       private void OnUserLoggedIn(object sender, LoggedInEventArgs e)
       {
          activeUser = e.User;
-         CheckSchedule();
       }
       private void OnLoginScreenClosed(object sender, EventArgs e)
       {
-         if(activeUser == null)
+         if (activeUser == null)
          {
             Close();
          }
@@ -269,6 +269,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          {
 
             viewAppointmentsWeeklyRadioBtn.Checked = false;
+            viewAppointmentAllRadioBtn.Checked = false;
             earliestDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             latestDate = earliestDate.AddMonths(1).AddTicks(-1);
 
@@ -282,6 +283,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          if (viewAppointmentsWeeklyRadioBtn.Checked == true)
          {
             viewAppointmentsMonthlyRadioBtn.Checked = false;
+            viewAppointmentAllRadioBtn.Checked = false;
 
             // Set Appointment Window to range from beginning to end of current week
             var diff = DateTime.Now.DayOfWeek - CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
@@ -317,9 +319,9 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          int id = int.Parse(customerIDCmb.SelectedItem.ToString());
          Customer currentCustomer = null;
 
-         foreach(var customer in allCustomers)
+         foreach (var customer in allCustomers)
          {
-            if(customer.CustomerID == id)
+            if (customer.CustomerID == id)
             {
                currentCustomer = customer;
                break;
@@ -340,21 +342,21 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
 
       }
 
-      private void OnAddressIDCmbChanged(Object sender, EventArgs e) 
+      private void OnAddressIDCmbChanged(Object sender, EventArgs e)
       {
          int id = int.Parse(addressIDCmb.SelectedItem.ToString());
          Address currentAddress = null;
 
-         foreach(var address in allAddresses) 
+         foreach (var address in allAddresses)
          {
-            if(address.ID == id) 
+            if (address.ID == id)
             {
                currentAddress = address;
                break;
             }
          }
-         if (currentAddress == null) 
-         { 
+         if (currentAddress == null)
+         {
             MessageBox.Show("Could not load address data");
          }
          else
@@ -372,15 +374,15 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
       }
 
       #region Toolbar Items
-      private void OnMonthlyReportsToolStripSelected (object sender, EventArgs e) 
+      private void OnMonthlyReportsToolStripSelected(object sender, EventArgs e)
       {
          ReportsByTypeMonthly reportsByTypeMonthly = new ReportsByTypeMonthly();
          this.Visible = false;
          reportsByTypeMonthly.ShowDialog();
          this.Visible = true;
       }
-      
-      private void OnCustomerReportsToolStripSelected (object sender, EventArgs e)
+
+      private void OnCustomerReportsToolStripSelected(object sender, EventArgs e)
       {
          ReportsByCustomerAddressID reportsByCustomerAddressID = new ReportsByCustomerAddressID();
          this.Visible = false;
@@ -389,7 +391,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          this.Visible = true;
       }
 
-      private void OnAppointmentReportsToolStripSelected (object sender, EventArgs e)
+      private void OnAppointmentReportsToolStripSelected(object sender, EventArgs e)
       {
          ReportsByUserAppointment reportsByUserAppointment = new ReportsByUserAppointment();
          this.Visible = false;
@@ -397,7 +399,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          ResetHomeForm();
          this.Visible = true;
       }
-      private void OnNewAppointmentToolStripSelected (object sender, EventArgs e)
+      private void OnNewAppointmentToolStripSelected(object sender, EventArgs e)
       {
          NewAppointmentForm newAppointmentForm = new NewAppointmentForm(activeUser);
          this.Visible = false;
@@ -405,8 +407,8 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          ResetHomeForm();
          this.Visible = true;
       }
-      
-      private void OnModifyDeleteAppointmentToolStripSelected (object sender, EventArgs e)
+
+      private void OnModifyDeleteAppointmentToolStripSelected(object sender, EventArgs e)
       {
          SelectAppointmentForm selectAppointmentForm = new SelectAppointmentForm(activeUser);
          this.Visible = false;
@@ -415,7 +417,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          this.Visible = true;
       }
 
-      private void OnNewCustomerToolStripSelected (object sender, EventArgs e)
+      private void OnNewCustomerToolStripSelected(object sender, EventArgs e)
       {
          NewCustomerForm newCustomerForm = new NewCustomerForm(activeUser);
          this.Visible = false;
@@ -433,5 +435,23 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms
          this.Visible = true;
       }
       #endregion
+
+      private void viewAppointmentAllRadioBtn_CheckedChanged(object sender, EventArgs e)
+      {
+         if (viewAppointmentAllRadioBtn.Checked == true)
+         {
+            viewAppointmentsMonthlyRadioBtn.Checked = false;
+            viewAppointmentsWeeklyRadioBtn.Checked = false;
+
+            // Set Appointment Window to range from beginning to end of current week
+            var diff = DateTime.Now.DayOfWeek - CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+            if (diff < 0) { diff += 7; }
+
+            earliestDate = new DateTime();
+            latestDate = DateTime.Now.AddYears(300);
+
+            ReloadCalendar(false);
+         }
+      }
    }
 }

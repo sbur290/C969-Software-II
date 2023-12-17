@@ -49,7 +49,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Modify_Or_Delete
          }
 
          modifyAppointmentTitleTxtBx.Text = currentAppointment.Title;
-         newAppointmentDescriptionTxtBx.Text = currentAppointment.Description;
+         modifyAppointmentDescriptionTxtBx.Text = currentAppointment.Description;
          modifyAppointmentLocationTxtBx.Text = currentAppointment.Location;
          modifyAppointmentContactTxtBx.Text = currentAppointment.Contact;
          modifyAppointmentURLTxtBx.Text = currentAppointment.Url;
@@ -65,16 +65,34 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Modify_Or_Delete
       }
       private bool IsFormValid()
       {
-         bool valid = false;
-         if (!Validator.IsNullOrWhitespace(modifyAppointmentTitleTxtBx) &&
-            !Validator.IsNullOrWhitespace(newAppointmentDescriptionTxtBx) &&
-            !Validator.IsNullOrWhitespace(modifyAppointmentLocationTxtBx) &&
-            !Validator.IsNullOrWhitespace(modifyAppointmentContactTxtBx) &&
-            !Validator.HasInvalidCharacters(modifyAppointmentContactTxtBx) &&
-            !Validator.IsNullOrWhitespace(modifyAppointmentURLTxtBx))
+         bool valid = true;
+         StringBuilder stringBuilder = new StringBuilder();
+         if (Validator.IsNullOrWhitespace(modifyAppointmentTitleTxtBx))
          {
-            valid = true;
+            stringBuilder.Append("Invalid Title\r\n");
+            valid = false;
          }
+         if (Validator.IsNullOrWhitespace(modifyAppointmentDescriptionTxtBx))
+         {
+            stringBuilder.Append("Invalid Description\r\n");
+            valid = false;
+         }
+         if (Validator.IsNullOrWhitespace(modifyAppointmentLocationTxtBx))
+         {
+            stringBuilder.Append("Invalid Title\r\n");
+            valid = false;
+         }
+         if (Validator.IsNullOrWhitespace(modifyAppointmentContactTxtBx) ||
+             Validator.HasInvalidCharacters(modifyAppointmentContactTxtBx))
+         {
+            stringBuilder.Append("Invalid Contact\r\n");
+            valid = false;
+         }
+         if (Validator.IsNullOrWhitespace(modifyAppointmentURLTxtBx))
+         {
+            stringBuilder.Append("Invalid URL\r\n");
+         }
+         MessageBox.Show(stringBuilder.ToString());
          return valid;
       }
 
@@ -132,7 +150,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Modify_Or_Delete
             int appointmentID = int.Parse(modifyAppointmentIDTxtBx.Text);
             int customerID = int.Parse(modifyAppointmentCustomerIDCmb.SelectedItem.ToString());
             string title = modifyAppointmentTitleTxtBx.Text;
-            string description = newAppointmentDescriptionTxtBx.Text;
+            string description = modifyAppointmentDescriptionTxtBx.Text;
             string location = modifyAppointmentLocationTxtBx.Text;
             string contact = modifyAppointmentContactTxtBx.Text;
             string type = modifyAppointmentTypeCmb.SelectedItem.ToString();

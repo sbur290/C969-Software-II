@@ -68,6 +68,7 @@
          this.viewTimeZoneLocalRadioBtn = new System.Windows.Forms.RadioButton();
          this.viewTimeZoneUTCRadioBtn = new System.Windows.Forms.RadioButton();
          this.dateRangeGrpBx = new System.Windows.Forms.GroupBox();
+         this.viewAppointmentAllRadioBtn = new System.Windows.Forms.RadioButton();
          this.viewAppointmentsMonthlyRadioBtn = new System.Windows.Forms.RadioButton();
          this.viewAppointmentsWeeklyRadioBtn = new System.Windows.Forms.RadioButton();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -469,7 +470,7 @@
          // 
          this.currentAppointmentViewRangeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.currentAppointmentViewRangeLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-         this.currentAppointmentViewRangeLbl.Location = new System.Drawing.Point(6, 135);
+         this.currentAppointmentViewRangeLbl.Location = new System.Drawing.Point(6, 168);
          this.currentAppointmentViewRangeLbl.Name = "currentAppointmentViewRangeLbl";
          this.currentAppointmentViewRangeLbl.Size = new System.Drawing.Size(234, 41);
          this.currentAppointmentViewRangeLbl.TabIndex = 2;
@@ -513,20 +514,34 @@
          // 
          // dateRangeGrpBx
          // 
+         this.dateRangeGrpBx.Controls.Add(this.viewAppointmentAllRadioBtn);
          this.dateRangeGrpBx.Controls.Add(this.viewAppointmentsMonthlyRadioBtn);
          this.dateRangeGrpBx.Controls.Add(this.viewAppointmentsWeeklyRadioBtn);
          this.dateRangeGrpBx.Location = new System.Drawing.Point(6, 17);
          this.dateRangeGrpBx.Name = "dateRangeGrpBx";
-         this.dateRangeGrpBx.Size = new System.Drawing.Size(110, 100);
+         this.dateRangeGrpBx.Size = new System.Drawing.Size(110, 130);
          this.dateRangeGrpBx.TabIndex = 0;
          this.dateRangeGrpBx.TabStop = false;
          this.dateRangeGrpBx.Text = "View Appointments By:";
+         // 
+         // viewAppointmentAllRadioBtn
+         // 
+         this.viewAppointmentAllRadioBtn.AutoSize = true;
+         this.viewAppointmentAllRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.viewAppointmentAllRadioBtn.Location = new System.Drawing.Point(19, 38);
+         this.viewAppointmentAllRadioBtn.Name = "viewAppointmentAllRadioBtn";
+         this.viewAppointmentAllRadioBtn.Size = new System.Drawing.Size(36, 17);
+         this.viewAppointmentAllRadioBtn.TabIndex = 5;
+         this.viewAppointmentAllRadioBtn.TabStop = true;
+         this.viewAppointmentAllRadioBtn.Text = "All";
+         this.viewAppointmentAllRadioBtn.UseVisualStyleBackColor = true;
+         this.viewAppointmentAllRadioBtn.CheckedChanged += new System.EventHandler(this.viewAppointmentAllRadioBtn_CheckedChanged);
          // 
          // viewAppointmentsMonthlyRadioBtn
          // 
          this.viewAppointmentsMonthlyRadioBtn.AutoSize = true;
          this.viewAppointmentsMonthlyRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.viewAppointmentsMonthlyRadioBtn.Location = new System.Drawing.Point(16, 61);
+         this.viewAppointmentsMonthlyRadioBtn.Location = new System.Drawing.Point(18, 85);
          this.viewAppointmentsMonthlyRadioBtn.Name = "viewAppointmentsMonthlyRadioBtn";
          this.viewAppointmentsMonthlyRadioBtn.Size = new System.Drawing.Size(62, 17);
          this.viewAppointmentsMonthlyRadioBtn.TabIndex = 4;
@@ -538,7 +553,7 @@
          // 
          this.viewAppointmentsWeeklyRadioBtn.AutoSize = true;
          this.viewAppointmentsWeeklyRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.viewAppointmentsWeeklyRadioBtn.Location = new System.Drawing.Point(16, 33);
+         this.viewAppointmentsWeeklyRadioBtn.Location = new System.Drawing.Point(18, 61);
          this.viewAppointmentsWeeklyRadioBtn.Name = "viewAppointmentsWeeklyRadioBtn";
          this.viewAppointmentsWeeklyRadioBtn.Size = new System.Drawing.Size(61, 17);
          this.viewAppointmentsWeeklyRadioBtn.TabIndex = 3;
@@ -727,5 +742,6 @@
       private System.Windows.Forms.RadioButton viewTimeZoneLocalRadioBtn;
       private System.Windows.Forms.RadioButton viewTimeZoneUTCRadioBtn;
       private System.Windows.Forms.RadioButton viewAppointmentsMonthlyRadioBtn;
+      private System.Windows.Forms.RadioButton viewAppointmentAllRadioBtn;
    }
 }

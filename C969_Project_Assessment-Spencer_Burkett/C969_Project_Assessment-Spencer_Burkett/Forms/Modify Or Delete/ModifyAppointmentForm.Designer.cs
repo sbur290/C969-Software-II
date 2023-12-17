@@ -44,7 +44,7 @@
          this.modifyAppointmentLocationLbl = new System.Windows.Forms.Label();
          this.modifyAppointmentLocationTxtBx = new System.Windows.Forms.TextBox();
          this.modifyAppointmentDescriptionLbl = new System.Windows.Forms.Label();
-         this.newAppointmentDescriptionTxtBx = new System.Windows.Forms.TextBox();
+         this.modifyAppointmentDescriptionTxtBx = new System.Windows.Forms.TextBox();
          this.modifyAppointmentTitleLbl = new System.Windows.Forms.Label();
          this.modifyAppointmentTitleTxtBx = new System.Windows.Forms.TextBox();
          this.modifyAppointmentCustomerNameLbl = new System.Windows.Forms.Label();
@@ -94,7 +94,7 @@
          this.modifyAppointmentGrpBx.Controls.Add(this.modifyAppointmentLocationLbl);
          this.modifyAppointmentGrpBx.Controls.Add(this.modifyAppointmentLocationTxtBx);
          this.modifyAppointmentGrpBx.Controls.Add(this.modifyAppointmentDescriptionLbl);
-         this.modifyAppointmentGrpBx.Controls.Add(this.newAppointmentDescriptionTxtBx);
+         this.modifyAppointmentGrpBx.Controls.Add(this.modifyAppointmentDescriptionTxtBx);
          this.modifyAppointmentGrpBx.Controls.Add(this.modifyAppointmentTitleLbl);
          this.modifyAppointmentGrpBx.Controls.Add(this.modifyAppointmentTitleTxtBx);
          this.modifyAppointmentGrpBx.Location = new System.Drawing.Point(17, 72);
@@ -219,12 +219,12 @@
          this.modifyAppointmentDescriptionLbl.TabIndex = 3;
          this.modifyAppointmentDescriptionLbl.Text = "Description:";
          // 
-         // newAppointmentDescriptionTxtBx
+         // modifyAppointmentDescriptionTxtBx
          // 
-         this.newAppointmentDescriptionTxtBx.Location = new System.Drawing.Point(75, 61);
-         this.newAppointmentDescriptionTxtBx.Name = "newAppointmentDescriptionTxtBx";
-         this.newAppointmentDescriptionTxtBx.Size = new System.Drawing.Size(310, 20);
-         this.newAppointmentDescriptionTxtBx.TabIndex = 3;
+         this.modifyAppointmentDescriptionTxtBx.Location = new System.Drawing.Point(75, 61);
+         this.modifyAppointmentDescriptionTxtBx.Name = "modifyAppointmentDescriptionTxtBx";
+         this.modifyAppointmentDescriptionTxtBx.Size = new System.Drawing.Size(310, 20);
+         this.modifyAppointmentDescriptionTxtBx.TabIndex = 3;
          // 
          // modifyAppointmentTitleLbl
          // 
@@ -357,7 +357,7 @@
       private System.Windows.Forms.Label modifyAppointmentLocationLbl;
       private System.Windows.Forms.TextBox modifyAppointmentLocationTxtBx;
       private System.Windows.Forms.Label modifyAppointmentDescriptionLbl;
-      private System.Windows.Forms.TextBox newAppointmentDescriptionTxtBx;
+      private System.Windows.Forms.TextBox modifyAppointmentDescriptionTxtBx;
       private System.Windows.Forms.Label modifyAppointmentTitleLbl;
       private System.Windows.Forms.TextBox modifyAppointmentTitleTxtBx;
       private System.Windows.Forms.Label modifyAppointmentCustomerNameLbl;

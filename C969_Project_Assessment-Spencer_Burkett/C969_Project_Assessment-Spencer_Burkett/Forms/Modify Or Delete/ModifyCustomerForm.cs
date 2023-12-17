@@ -58,7 +58,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Modify_Or_Delete
       {
          if (!IsFormValid())
          {
-            MessageBox.Show("One or more fields is invalid");
+            MessageBox.Show("Customer name is invalid.");
             return;
          }
          Customer newCustomer = new Customer(int.Parse(modifyCustomerIDTxtBx.Text), modifyCustomerNameTxtBx.Text, int.Parse(modifyCustomerAddressIDCmb.SelectedItem.ToString()),

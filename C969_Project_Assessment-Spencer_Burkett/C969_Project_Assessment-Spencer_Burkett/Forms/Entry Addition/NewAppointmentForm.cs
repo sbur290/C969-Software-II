@@ -60,18 +60,37 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Entry_Addition
          newAppointmentTypeCmb.SelectedIndex = 0;
 
       }
+
       private bool IsFormValid()
       {
-         bool valid = false;
-         if(!Validator.IsNullOrWhitespace(newAppointmentTitleTxtBx)        &&
-            !Validator.IsNullOrWhitespace(newAppointmentDescriptionTxtBx)  &&
-            !Validator.IsNullOrWhitespace(newAppointmentLocationTxtBx)     &&
-            !Validator.IsNullOrWhitespace(newAppointmentContactTxtBx)      &&
-            !Validator.HasInvalidCharacters(newAppointmentContactTxtBx)    &&
-            !Validator.IsNullOrWhitespace(newAppointmentURLTxtBx)            )
+         bool valid = true;
+         StringBuilder stringBuilder = new StringBuilder();
+         if(Validator.IsNullOrWhitespace(newAppointmentTitleTxtBx))
          {
-            valid = true;
+            stringBuilder.Append("Invalid Title\r\n");
+            valid = false;
          }
+         if (Validator.IsNullOrWhitespace(newAppointmentDescriptionTxtBx))
+         {
+            stringBuilder.Append("Invalid Description\r\n");
+            valid = false;
+         }
+         if (Validator.IsNullOrWhitespace(newAppointmentLocationTxtBx))
+         {
+            stringBuilder.Append("Invalid Title\r\n");
+            valid = false;
+         }
+         if (Validator.IsNullOrWhitespace(newAppointmentContactTxtBx) ||
+             Validator.HasInvalidCharacters(newAppointmentContactTxtBx) )
+         {
+            stringBuilder.Append("Invalid Contact\r\n");
+            valid = false;
+         }
+         if (Validator.IsNullOrWhitespace(newAppointmentURLTxtBx))
+         {
+            stringBuilder.Append("Invalid URL\r\n");
+         }
+         MessageBox.Show(stringBuilder.ToString());
          return valid;
       }
       private void newAppointmentSaveBtn_Click(object sender, EventArgs e)

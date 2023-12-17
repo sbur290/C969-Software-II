@@ -54,7 +54,7 @@ namespace C969_Project_Assessment_Spencer_Burkett.Forms.Entry_Addition
       {
          if (!IsFormValid())
          {
-            MessageBox.Show("One or more fields is invalid");
+            MessageBox.Show("Customer name is invalid.");
             return;
          }
          Customer newCustomer = new Customer(int.Parse(newCustomerIDTxtBx.Text), newCustomerNameTxtBx.Text, int.Parse(newCustomerAddressIDCmb.SelectedItem.ToString()), 
